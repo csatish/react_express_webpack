@@ -2,19 +2,37 @@
   "name": "react_express_webpack",
   "version": "1.0.0",
   "description": "React Express Webpack",
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
-    "start": "babel-node buildScripts/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "howToRun": "This is for comment - npm run build - webpack-cli required to be installed, npm start - to run the server",
+    "build": "webpack --config ./webpack.config.js --mode development",
+    "watch": "webpack --watch",
+    "start": "babel-node buildScripts/server.js"
   },
   "author": "satish",
   "license": "ISC",
+  "babel": {
+    "presets": [
+      "env",
+      "react",
+      "stage-2"
+    ]
+  },
   "dependencies": {
     "express": "^4.16.3",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1"
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "webpack": "^4.4.1",
+    "webpack-cli": "^2.0.13",
+    "webpack-dev-middleware": "^3.1.0"
   }
 }
