@@ -1,9 +1,10 @@
 import React from 'react'
-import Home from './Containers/Home'
 
-class RootContainer extends React.Component {
+export default class Component extends React.Component {
+
     constructor(props) {
         super(props)
+
     }
 
     _bind(...methods) {
@@ -12,14 +13,10 @@ class RootContainer extends React.Component {
         }
     }
 
-
     render() {
         return(
-            <div style={{width:"100%", height:"100%", minHeight:400}}>
-                <Home/>
+            <div>
             </div>
         )
     }
 }
-
-export default RootContainer

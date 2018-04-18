@@ -1,6 +1,8 @@
 
 
 module.exports = {
+    mode: 'development',
+    devtool: 'source-map',
     entry: [
         './src/index.js'
     ],
@@ -8,5 +10,14 @@ module.exports = {
         path: __dirname + '/dist',
         publicPath: '/',
         filename: 'bundle.js'
+    },
+    module:{
+        rules:[
+            {
+                test: /\.js$/,
+                use: ['babel-loader'],
+                exclude: /node_modules/
+            }
+        ]
     }
 };
