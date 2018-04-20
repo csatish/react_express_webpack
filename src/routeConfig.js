@@ -1,12 +1,13 @@
 import React from 'react'
-import App from './App'
-import Contact from './Containers/Contact'
-import About from './Containers/About'
-import Home from './Containers/Home'
-
+// import App from './App'
+// import Contact from './Containers/Contact'
+// import About from './Containers/About'
 import {BrowserRouter, Route, Switch, NavLink, Link}  from 'react-router-dom'
 
+import DynamicImport from './DynamicImport'
 
+
+//Working
 // class AppRoute extends React.Component {
 //     render() {
 //         return (
@@ -30,21 +31,35 @@ import {BrowserRouter, Route, Switch, NavLink, Link}  from 'react-router-dom'
 // }
 // export default AppRoute;
 
+
+let DyApp = (props) => (<DynamicImport load={()=> import('./App')}>
+                        {(Component) => Component === null ? <p>Loading</p> : <Component {...props} />}
+                    </DynamicImport>)
+let DyAbout = (props) => (<DynamicImport load={()=> import('./Containers/About')}>
+                        {(Component) => Component === null ? <p>Loading</p> : <Component {...props} />}
+                    </DynamicImport>)
+let DyContact = (props) => (<DynamicImport load={()=> import('./Containers/Contact')}>
+                        {(Component) => Component === null ? <p>Loading</p> : <Component {...props} />}
+                    </DynamicImport>)
+
 const AppRoute = () => (
     <BrowserRouter>
         <div>
             <ul>
                 <li><NavLink to='/'>Home</NavLink></li>
                 <li><NavLink to='/about'>About</NavLink></li>
-                <li><NavLink to='/contact'>Conta</NavLink></li>
+                <li><NavLink to='/contact'>Contact</NavLink></li>
             </ul>
             <Switch>
-                <Route exact path="/" component={App} />
-                <Route exact path="/about" component={About} />
-                <Route exact path="/contact" component={Contact}/>
+                <Route exact path="/" component={DyApp} />
+                <Route exact path="/about" component={DyAbout} />
+                <Route exact path="/contact" component={DyContact}/>
 
             </Switch>
+
         </div>
     </BrowserRouter>
 )
 export default AppRoute
+
+

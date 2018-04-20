@@ -9,7 +9,8 @@ module.exports = {
     output: {
         path: __dirname + '/dist',
         publicPath: '/',
-        filename: 'bundle.js'
+        filename: '[name]-bundle.js',
+        chunkFilename: '[name]-[hash].chunk.js'
     },
     module:{
         rules:[
@@ -21,3 +22,8 @@ module.exports = {
         ]
     }
 };
+
+
+
+
+
